@@ -12,7 +12,7 @@ function Report() {
         <button
           className={`flex-1 text-center pb-2 font-PBold text-lg transition-all duration-300 ${
             activeTab === "weekly"
-              ? "text-green-600 border-b-[5px] border-green-600"
+              ? "text-[#0F9D58] border-b-[5px] border-[#0F9D58]"
               : "text-gray-400"
           }`}
           onClick={() => setActiveTab("weekly")}
@@ -22,7 +22,7 @@ function Report() {
         <button
           className={`flex-1 text-center pb-2 font-PBold text-lg transition-all duration-300 ${
             activeTab === "monthly"
-              ? "text-green-600 border-b-[5px] border-green-600"
+              ? "text-[#0F9D58] border-b-[5px] border-[#0F9D58]"
               : "text-gray-400"
           }`}
           onClick={() => setActiveTab("monthly")}
