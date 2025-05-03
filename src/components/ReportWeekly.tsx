@@ -11,11 +11,9 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-// 타입 정의
 type DayData = { day: string; count: number };
 type WeekKey = "2025 Apr week1" | "2025 Apr week2" | "2025 Apr week3";
 
-// 더미 데이터 정의
 const dummyWeeklyData: Record<WeekKey, DayData[]> = {
   "2025 Apr week1": [
     { day: "Mon", count: 2 },
@@ -53,9 +51,12 @@ function ReportWeekly() {
 
   return (
     <div className="px-4 py-6 font-PRegular">
-      <h2 className="text-2xl font-PBold mb-4 text-center">
+      <h2 className="text-2xl font-PBold mb-2 text-center">
         {weekKeys[activeIndex]}
       </h2>
+
+      {/* ➕ Daily Progress Details 텍스트 */}
+      <p className="text-sm text-gray-700 mb-2 text-left font-PMedium">Daily Progress Details</p>
 
       <Swiper
         spaceBetween={30}
@@ -66,12 +67,12 @@ function ReportWeekly() {
       >
         {weekKeys.map((week, idx) => (
           <SwiperSlide key={week}>
-            <div className="w-full h-64 bg-white rounded shadow border">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart
-                  data={dummyWeeklyData[week]}
-                  margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-                >
+          <div className="w-full max-w-[600px] h-[220px] bg-white rounded border border-gray-200 shadow-md p-4">
+            <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+      data={dummyWeeklyData[week]}
+      margin={{ top: 10, right: 30, left: -30, bottom: 0 }} 
+    >
                   <defs>
                     <linearGradient
                       id={`colorCount-${idx}`}
@@ -95,15 +96,7 @@ function ReportWeekly() {
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis
                     dataKey="day"
-                    ticks={[
-                      "Mon",
-                      "Tue",
-                      "Wed",
-                      "Thu",
-                      "Fri",
-                      "Sat",
-                      "Sun",
-                    ]}
+                    ticks={["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}
                   />
                   <YAxis
                     domain={[0, 3]}
