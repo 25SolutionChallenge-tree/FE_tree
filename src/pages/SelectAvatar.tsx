@@ -5,6 +5,7 @@ import logo from "../assets/images/headerLogo.png";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import GetStartedButton from "../components/GetStartedButton";
 
 function SelectAvatar() {
   const navigate = useNavigate();
@@ -73,12 +74,7 @@ function SelectAvatar() {
             className="border border-[#E3E5E5] w-85 h-12 rounded-lg p-4"
           ></input>
         </div>
-        <button
-          onClick={handleSubmit}
-          className="bg-main font-PMedium text-white text-sm w-85 h-12 rounded-lg"
-        >
-          GET STARTED
-        </button>
+        <GetStartedButton className="mt-6" />
       </div>
     </div>
   );
