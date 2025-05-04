@@ -1,7 +1,7 @@
 import treeIcon from "../assets/images/treeIcon.png";
 import forcyIcon from "../assets/images/forsythiaIcon.png";
 import blossomIcon from "../assets/images/cherryBlossomIcon.png";
-import logo from "../assets/images/headerLogo.png";
+import logo from "../assets/images/logoGreen.svg";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
