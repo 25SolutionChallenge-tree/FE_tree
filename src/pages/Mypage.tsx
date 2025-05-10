@@ -43,7 +43,7 @@ function Mypage() {
         className="absolute top-4 right-4 px-4 py-1 text-sm text-white rounded-full"
         style={{ backgroundColor: "#0F9D58" }}
       >
-        수정
+        edit
       </button>
 
       {/* 프로필 영역 */}
@@ -54,7 +54,7 @@ function Mypage() {
           className="w-24 h-24 rounded-full border-2 border-green-600 object-cover"
         />
         <div className="mt-4 text-lg font-bold text-black">
-          {nickname || "닉네임"}
+          {nickname || "nickname"}
         </div>
         <div className="mt-1 text-sm text-gray-500">
           {email}
