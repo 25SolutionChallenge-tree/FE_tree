@@ -99,8 +99,11 @@ function ReportWeekly() {
       >
         {weekKeys.map((week, idx) => (
           <SwiperSlide key={week}>
-            <div className="w-full max-w-[600px] mx-auto px-2">
-              <div className="h-[220px] bg-white rounded border border-gray-200 shadow-md p-4">
+            <div className="w-full max-w-[900px] mx-auto px-2">
+            <div
+  className="h-[220px] bg-white rounded border border-gray-200 p-4"
+  style={{ boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.08)" }}
+>
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart
                     data={dummyWeeklyData[week]}
@@ -146,8 +149,9 @@ function ReportWeekly() {
                   Frequently used words
                 </p>
                 <div
-                  className="h-[220px] bg-white rounded border border-gray-200 shadow-lg p-4 overflow-hidden flex justify-center items-center"
-                >
+  className="h-[220px] bg-white rounded border border-gray-200 p-4 overflow-hidden flex justify-center items-center"
+  style={{ boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.08)" }}
+>
                   <WordCloud words={dummyWordData[week]} width={600} height={200} />
                 </div>
               </div>
