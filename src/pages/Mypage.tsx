@@ -28,7 +28,7 @@ function Mypage() {
         const user = await getUserProfile();
         setNickname(user.nickname);
         setAvatar(user.avatar);
-        // setEmail(user.email); ❌ 주석 처리 또는 생략
+        // setEmail(user.email); 
       } catch (error) {
         console.error("유저 정보 불러오기 실패", error);
       }
@@ -60,6 +60,22 @@ function Mypage() {
           {email}
         </div>
       </div>
+      {/* Contact Us 영역 */}
+      <a
+        href="mailto:pjseo1313@hufs.ac.kr"
+        className="w-full max-w-md mt-8 p-4 text-center text-base font-medium text-white rounded-lg shadow transition-colors"
+        style={{
+          backgroundColor: "#87CEAB",
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.backgroundColor = "#0F9D58";
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.backgroundColor = "#87CEAB";
+        }}
+      >
+        Contact Us
+      </a>
     </div>
   );
 }
