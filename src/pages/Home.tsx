@@ -51,9 +51,12 @@ function Home() {
     const fetchAnsweredCount = async () => {
       try {
         const start = getStartOfMonth();
-        const end = getToday();
-        const res = await getPeriodDiary(start, end);
-        setAnsweredCount(res.count * 3); // 일기 개수 * 3
+      const end = getToday();
+      const res = await getPeriodDiary(start, end);
+      const count = res.count * 3;
+      setAnsweredCount(count);
+
+      alert(`이번 달 총 ${count}개의 질문에 답변했어요!`);
       } catch (error) {
         console.error("이번 달 일기 수 조회 실패", error);
       }
@@ -63,10 +66,10 @@ function Home() {
   }, []);
 
   const getDaysInMonth = (date: Date): number => {
-    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-  };
-  
-  const totalCount = getDaysInMonth(new Date()) * 3;
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+};
+
+const totalCount = getDaysInMonth(new Date()) * 3;
 
   return (
     <div className="flex flex-col justify-center items-stretch h-full gap-4 w-full px-4">
