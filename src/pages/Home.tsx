@@ -5,10 +5,13 @@ import greenIcon from "../assets/images/treeIcon.svg";
 import yellowIcon from "../assets/images/forsythiaIcon.svg";
 import pinkIcon from "../assets/images/cherryBlossomIcon.svg";
 import { getUserProfile } from "../apis/user";
+import { getPeriodDiary } from "../apis/diary";
 
 function Home() {
   const [nickname, setNickname] = useState<string>("");
   const [avatar, setAvatar] = useState<string>("");
+  const [answeredCount, setAnsweredCount] = useState<number>(0);
+  
   const getAvatarImage = (avatar: string | null): string => {
     switch (avatar) {
       case "GREEN":
@@ -35,7 +38,30 @@ function Home() {
     userInfo();
   }, []);
 
-  const answeredCount = 90;
+  const getStartOfMonth = (): string => {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+  };
+  
+  const getToday = (): string => {
+    return new Date().toISOString();
+  };
+
+  useEffect(() => {
+    const fetchAnsweredCount = async () => {
+      try {
+        const start = getStartOfMonth();
+        const end = getToday();
+        const res = await getPeriodDiary(start, end);
+        setAnsweredCount(res.count * 3); // 일기 개수 * 3
+      } catch (error) {
+        console.error("이번 달 일기 수 조회 실패", error);
+      }
+    };
+  
+    fetchAnsweredCount();
+  }, []);
+
   return (
     <div className="flex flex-col justify-center items-stretch h-full gap-4 w-full px-4">
 
