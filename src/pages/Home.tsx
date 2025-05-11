@@ -51,12 +51,11 @@ function Home() {
     const fetchAnsweredCount = async () => {
       try {
         const start = getStartOfMonth();
-      const end = getToday();
-      const res = await getPeriodDiary(start, end);
-      const count = res.count * 3;
-      setAnsweredCount(count);
-
-      alert(`이번 달 총 ${count}개의 질문에 답변했어요!`);
+        const end = getToday();
+        const res = await getPeriodDiary(start, end);
+  
+        setAnsweredCount(res.count); 
+  
       } catch (error) {
         console.error("이번 달 일기 수 조회 실패", error);
       }
