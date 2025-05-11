@@ -1,10 +1,16 @@
 import { useMemo } from "react";
 import treeBg from "../assets/images/treeHome.png";
 
-const TOTAL_CIRCLES = 90;
+// 기존의 고정값은 제거합니다
 const COLORS = ["#4CAF50", "#81C784", "#AED581", "#66BB6A", "#A5D6A7", "#26A69A"];
 
-function TreeTrunk({ answeredCount }: { answeredCount: number }) {
+function TreeTrunk({
+  answeredCount,
+  totalCount,
+}: {
+  answeredCount: number;
+  totalCount: number;
+}) {
   const baseWidth = 600;
   const radius = baseWidth * 0.3;
   const centerX = baseWidth * 0.5;
@@ -23,7 +29,7 @@ function TreeTrunk({ answeredCount }: { answeredCount: number }) {
     const MAX_ATTEMPTS = 1000;
 
     let attempts = 0;
-    while (newCircles.length < answeredCount * 3 && attempts < MAX_ATTEMPTS) {
+    while (newCircles.length < answeredCount && attempts < MAX_ATTEMPTS) {
       const angle = Math.random() * 2 * Math.PI;
       const r = Math.sqrt(Math.random()) * radius;
       const x = centerX + r * Math.cos(angle);
@@ -84,7 +90,7 @@ function TreeTrunk({ answeredCount }: { answeredCount: number }) {
       <span className="flex flex-col items-end justify-end w-full px-2">
         <div className="font-PLight text-xs">Monthly Progress Visual</div>
         <div className="font-PExtraBold text-main text-base">
-          {answeredCount}/{TOTAL_CIRCLES} answered
+          {answeredCount}/{totalCount} answered
         </div>
       </span>
     </div>

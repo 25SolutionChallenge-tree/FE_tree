@@ -62,6 +62,12 @@ function Home() {
     fetchAnsweredCount();
   }, []);
 
+  const getDaysInMonth = (date: Date): number => {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  };
+  
+  const totalCount = getDaysInMonth(new Date()) * 3;
+
   return (
     <div className="flex flex-col justify-center items-stretch h-full gap-4 w-full px-4">
 
@@ -85,7 +91,8 @@ function Home() {
         </div>
         <div className="flex flex-col justify-center p-3 gap-2 w-full max-w-[25rem] min-h-[8rem] rounded-xl border-2 border-homeBorder shadow-lg bg-white">
  
-  <TreeTrunk answeredCount={answeredCount} />
+        <TreeTrunk answeredCount={answeredCount} totalCount={totalCount} />
+
 </div>
       </div>
       <div>
