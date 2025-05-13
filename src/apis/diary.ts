@@ -1,4 +1,5 @@
 import {
+  DiaryItem,
   DiaryListResponse,
   DiaryResponse,
   DiaryResponseList,
@@ -51,7 +52,22 @@ export const getPeriodDiary = async (
   }
 };
 
-//월간 레포트
+export const putTodayDiary = async (
+  diaryId: number,
+  data: PostDiaryRequest
+): Promise<DiaryItem> => {
+  try {
+    const response = await instance.put<DiaryItem>(
+      `/api/diary/${diaryId}`,
+      data
+    );
+    return response.data;
+  } catch (error) {
+    console.error("일기 수정 실패", error);
+    throw error;
+  }
+};
+
 export const getMonthlyReport = async (year: number, month: number): Promise<MonthlyReport> => {
   const res = await instance.get("/api/report/monthly", {
     params: { year, month },
@@ -68,4 +84,3 @@ export const createMonthlyReport = async (
     params: { yearMonth },
   });
   return response.data;
-};
